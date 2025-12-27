@@ -1,0 +1,54 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f6f8;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #1976d2;
+  color: white;
+}
+
+.search-box {
+  background: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+}
+
+.profile button {
+  margin-left: 10px;
+}
+
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.column {
+  background: white;
+  padding: 10px;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.task-card {
+  background: #e3f2fd;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.summary {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+}

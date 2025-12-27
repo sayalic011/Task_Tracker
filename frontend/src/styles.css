@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f4f6f8;
+}
+
+.navbar {
+  background: #1e293b;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-box {
+  background: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+}
+
+.profile {
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  background: white;
+  color: black;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.column {
+  background: white;
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.summary {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  font-weight: bold;
+}
