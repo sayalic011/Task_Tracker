@@ -52,25 +52,32 @@ export const getTasks = async (req, res) => {
 //   }
 // };
 export const updateTask = async (req, res) => {
-  const { status, title, description } = req.body;
+  const { title, description, status } = req.body;
   const { id } = req.params;
 
   try {
     const result = await pool.query(
-      `UPDATE tasks 
-       SET 
-         status = $1,
-         title = COALESCE($2, title),
-         description = COALESCE($3, description)
-       WHERE id = $4 AND user_id = $5
-       RETURNING *`,
-      [status, title, description, id, req.user.id]
+      `
+      UPDATE tasks
+      SET
+        title = COALESCE($1, title),
+        description = COALESCE($2, description),
+        status = COALESCE($3, status),
+        updated_at = NOW()
+      WHERE id = $4 AND user_id = $5
+      RETURNING *
+      `,
+      [title, description, status, id, req.user.id]
     );
 
-    if (result.rows.length === 0)
+    if (result.rows.length === 0) {
       return res.status(404).json({ error: "Task not found" });
+    }
 
-    res.json({ message: "Task updated", task: result.rows[0] });
+    res.json({
+      message: "Task updated",
+      task: result.rows[0],
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

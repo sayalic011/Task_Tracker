@@ -15,7 +15,7 @@ export default function Navbar({ user, search, setSearch, logout }) {
       </div>
 
       <div className="profile">
-        👤 {user?.name}
+        {/* 👤 {user?.name} */}
         <button onClick={logout}>Logout</button>
       </div>
     </div>

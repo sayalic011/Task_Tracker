@@ -8,7 +8,10 @@ export default function TaskCard({ task, refresh }) {
 
   const saveEdit = async () => {
     try {
-      await API.put(`/tasks/${task.id}`, { title, description });
+      await API.put(`/tasks/${task.id}`, {
+        title,
+        description,
+      });
       setEditing(false);
       refresh();
     } catch (err) {
@@ -26,6 +29,14 @@ export default function TaskCard({ task, refresh }) {
       console.error("Failed to delete task:", err);
     }
   };
+
+  // 🔹 Format updated_at date
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
 
   if (editing) {
     return (
@@ -45,7 +56,15 @@ export default function TaskCard({ task, refresh }) {
     <div className="task-card">
       <strong>{task.title}</strong>
       <p>{task.description}</p>
-      <div style={{ marginTop: "5px", display: "flex", gap: "5px" }}>
+
+      {/* ✅ Last Updated Date */}
+      {task.updated_at && (
+        <p style={{ fontSize: "12px", color: "#666" }}>
+          🕒 Updated on {formatDate(task.updated_at)}
+        </p>
+      )}
+
+      <div style={{ marginTop: "8px", display: "flex", gap: "6px" }}>
         <button onClick={() => setEditing(true)}>Edit</button>
         <button onClick={deleteTask}>Delete</button>
       </div>
